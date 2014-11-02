@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"Spawn Protection"
+	"version"			"1"
+	"up_date"			""
+	"author_name"			"Subject_Alpha"
+	"author_email"			""
+	"author_url"			"http://steamcommunity.com/id/subject_alpha/"
+	"info"				""
+	"override"			"0"
+}
