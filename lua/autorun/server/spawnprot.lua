@@ -1,5 +1,7 @@
 local meta = FindMetaTable("Entity")
-//spawn boxes
+--[[ this creates spawn protection boxes
+You can create as many boxes as you want. 
+Just remember you have to change the number values of the box, as well as add vectors]]
 local sBoxes = {
         [1] = {
                 Vector(0, 0, 0), --Start of box 1, type getpos to get these vectors to start the box. (Recommended you set this first below the map)
@@ -10,7 +12,7 @@ local sBoxes = {
                 Vector(0, 0, 0), --End of box 2
         },
 }
- 
+-- Do not touch this function.
 function meta:IsInSpawn()
         for _,boxes in pairs(sBoxes) do
                 for _,ent in pairs(ents.FindInBox(boxes[1], boxes[2])) do
@@ -21,7 +23,7 @@ function meta:IsInSpawn()
         end
         return false
 end
- 
+-- Do not touch this function.
 function meta:SetWeapon(wep_name)
         for _,v in pairs(self:GetWeapons()) do
                 if v:GetClass() == wep_name then
@@ -30,7 +32,7 @@ function meta:SetWeapon(wep_name)
         end
 end
  
- 
+-- This strips all weapons while in the box and switchets the players weapon to a physgun.
 timer.Create("SpawnCheck", 0, 0, function()
         for _,v in pairs(player.GetAll()) do
                 if IsValid(v) then
@@ -45,7 +47,7 @@ timer.Create("SpawnCheck", 0, 0, function()
                 end
         end
 end)
- 
+-- This grants god mode while in spawn.
 hook.Add("EntityTakeDamage", "SpawnProt", function(target, dmginfo)
         if target:IsPlayer() and target:IsInSpawn() then
                 dmginfo:ScaleDamage(0)
